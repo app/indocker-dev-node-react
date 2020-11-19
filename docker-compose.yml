@@ -1,0 +1,25 @@
+version: "3.5"
+
+services:
+
+  debian:
+    build: .
+    image: app/debian:sid
+    container_name: debian-sid
+    hostname: debian.a4pi
+    networks: 
+      - a4pi
+    environment:
+      - TZ=Europe/Moscow
+    volumes:
+      - ../devel:/home/app/devel
+    working_dir: /home/app/devel
+    command: sleep 365d
+    logging:
+      driver: json-file
+      options:
+        max-size: 20m
+
+networks:
+  a4pi:
+    name: "a4pi"
