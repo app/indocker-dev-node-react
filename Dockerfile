@@ -54,9 +54,12 @@ RUN echo 'LANG="en_US.UTF-8"\nLANGUAGE="en_US:en"\n' > /etc/default/locale
 USER app
 
 COPY .gitconfig /home/app/
-COPY .bash-prompt /home/app/
-RUN echo "alias ll='ls -la'" >> /home/app/.bashrc
-RUN echo ". ~/.bash-prompt" >> /home/app/.bashrc
+COPY .bash_prompt /home/app/
+COPY .bash_git /home/app/
+RUN echo "alias ll='ls -la'" >> /home/app/.bashrc && \
+  echo ". ~/.bash_prompt" >> /home/app/.bashrc && \
+  echo ". ~/.bash_git" >> /home/app/.bashrc
+
 RUN echo 'export LANG="en_US.UTF-8"\n' >> /home/app/.bashrc
 
 RUN \
