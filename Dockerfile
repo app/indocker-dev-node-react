@@ -25,7 +25,8 @@ RUN \
   rsyslog \
   sudo \
   git \
-  neovim
+  neovim \
+  tmux
 
 # nodejs dependencies
 RUN \
@@ -58,6 +59,7 @@ USER app
 COPY .gitconfig /home/app/
 COPY .bash_prompt /home/app/
 COPY .bash_git /home/app/
+COPY .tmux.conf /home/app/
 RUN echo "alias ll='ls -la'" >> /home/app/.bashrc && \
   echo ". ~/.bash_prompt" >> /home/app/.bashrc && \
   echo ". ~/.bash_git" >> /home/app/.bashrc && \
