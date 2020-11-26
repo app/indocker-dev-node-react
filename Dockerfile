@@ -60,6 +60,7 @@ COPY .gitconfig /home/app/
 COPY .bash_prompt /home/app/
 COPY .bash_git /home/app/
 COPY .tmux.conf /home/app/
+COPY .tmux_statusline /home/app/
 RUN echo "alias ll='ls -l'" >> /home/app/.bashrc && \
   echo "alias la='ls -la'" >> /home/app/.bashrc && \
   echo ". ~/.bash_prompt" >> /home/app/.bashrc && \
