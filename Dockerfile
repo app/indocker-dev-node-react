@@ -54,13 +54,12 @@ RUN export LANGUAGE="en_US.UTF-8" && export LANG="en_US.UTF-8" && export LC_ALL=
   sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && \
   locale-gen
 
-USER app
-
 COPY .gitconfig /home/app/
 COPY .bash_prompt /home/app/
 COPY .bash_git /home/app/
 COPY .tmux.conf /home/app/
 COPY .tmux_statusline /home/app/
+RUN chown -R app.app /home/app
 RUN echo "alias ll='ls -l'" >> /home/app/.bashrc && \
   echo "alias la='ls -la'" >> /home/app/.bashrc && \
   echo ". ~/.bash_prompt" >> /home/app/.bashrc && \
