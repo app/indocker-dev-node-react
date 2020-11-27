@@ -70,10 +70,11 @@ RUN echo 'export LANG="en_US.UTF-8"' >> /home/app/.bash_locale && \
   echo 'export LC_ALL="en_US.UTF-8"' >> /home/app/.bash_locale && \
   echo 'export LANGUAGE="en_US.UTF-8"' >> /home/app/.bash_locale
 
-RUN \
-  git clone https://github.com/app/nvim.git /home/app/.config/nvim && \
-  nvim +UpdateRemotePlugins +PlugUpdate +qall
+RUN git clone https://github.com/app/nvim.git /home/app/.config/nvim && \
 
 RUN chown -R app.app /home/app
+USER app
+RUN nvim +UpdateRemotePlugins +PlugUpdate +qall
+RUN [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 CMD ["/usr/bin/sleep"]
