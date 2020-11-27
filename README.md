@@ -1,6 +1,15 @@
 # indocker-dev-node-react
 Ready to use debian sid docker container for react/node applications development with vim (neovim)
-### Installation
+
+### Usage
+You can run this image with docker command
+```
+docker run --name js-vim --rm -t -i -v "$(pwd):/home/app/devel" \
+-u app -w /home/app/devel apaskal/javascript-neovim:latest bash
+```
+Or
+
+### Build and run (optional)
 Clone
 ```
 git clone https://github.com/app/indocker-dev-node-react.git
