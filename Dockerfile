@@ -59,7 +59,6 @@ COPY .bash_prompt /home/app/
 COPY .bash_git /home/app/
 COPY .tmux.conf /home/app/
 COPY .tmux_statusline /home/app/
-RUN chown -R app.app /home/app
 RUN echo "alias ll='ls -l'" >> /home/app/.bashrc && \
   echo "alias la='ls -la'" >> /home/app/.bashrc && \
   echo ". ~/.bash_prompt" >> /home/app/.bashrc && \
@@ -73,6 +72,8 @@ RUN echo 'export LANG="en_US.UTF-8"' >> /home/app/.bash_locale && \
 
 RUN \
   git clone https://github.com/app/nvim.git /home/app/.config/nvim && \
-  vim +UpdateRemotePlugins +PlugUpdate +qall
+  nvim +UpdateRemotePlugins +PlugUpdate +qall
+
+RUN chown -R app.app /home/app
 
 CMD ["/usr/bin/sleep"]
