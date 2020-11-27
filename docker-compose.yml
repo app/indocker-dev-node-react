@@ -4,7 +4,7 @@ services:
 
   debian:
     build: .
-    image: app/debian:sid
+    image: apaskal/javascript-neovim:latest
     container_name: debian-sid
     hostname: debian.a4pi
     ports:
