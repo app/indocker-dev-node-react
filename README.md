@@ -1,5 +1,5 @@
 # indocker-dev-node-react
-Ready to use debian sid docker container for react/node applications development with vim (neovim)
+Ready to use debian sid docker container for react/node applications development with neovim
 
 ### Usage
 You can run this image with docker command
