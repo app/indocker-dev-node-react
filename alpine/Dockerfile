@@ -7,21 +7,23 @@ ARG SERVICE_HOME
 ENV SERVICE_USER ${SERVICE_USER:-vim}
 ENV SERVICE_HOME ${SERVICE_HOME:-/home/${SERVICE_USER}}
 
-RUN \
-  adduser -h ${SERVICE_HOME} -s /sbin/nologin -u 1000 -D ${SERVICE_USER}
-
+RUN adduser --gecos "" -h ${SERVICE_HOME} -u 1000 -D ${SERVICE_USER}  
 RUN \
   apk add --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/testing \
-    bash \
-    py3-pynvim \
-    fzf-neovim \
-    py3-msgpack \
-    dumb-init \
-    neovim
+  bash \
+  py3-pynvim \
+  fzf-neovim \
+  py3-msgpack \
+  dumb-init \
+  neovim \
+  the_silver_searcher \
+  git
 
-USER    ${SERVICE_USER}
+RUN git clone https://github.com/app/nvim.git /home/${SERVICE_USER}/.config/nvim
+RUN chown -R ${SERVICE_USER}:${SERVICE_USER} /home/${SERVICE_USER}
+USER ${SERVICE_USER}
 WORKDIR ${SERVICE_HOME}
-VOLUME  ${SERVICE_HOME}
+SHELL ["/bin/bash", "-c"]
+RUN nvim --headless +PlugInstall +qall 2> ${SERVICE_HOME}/error.log
 
-# ENTRYPOINT [ "/usr/bin/dumb-init", "--", "nvim" ]
-ENTRYPOINT [ "/usr/bin/dumb-init", "--", "/bin/bash" ]
+CMD [ "/usr/bin/dumb-init", "--", "nvim" ]
