@@ -68,7 +68,7 @@ RUN echo "alias ll='ls -l'" >> ${USER_HOME}/.bashrc && \
   echo ". ~/.bash_prompt" >> ${USER_HOME}/.bashrc && \
   echo ". ~/.bash_git" >> ${USER_HOME}/.bashrc && \
   echo ". ~/.bash_locale" >> ${USER_HOME}/.bashrc && \
-  sed -i '1iexport TERM=xterm-256color' ${USER_HOME}/.bashrc
+  sed -i '1iexport TERM=tmux-256color' ${USER_HOME}/.bashrc
 
 RUN echo 'export LANG="en_US.UTF-8"' >> ${USER_HOME}/.bash_locale && \
   echo 'export LC_ALL="en_US.UTF-8"' >> ${USER_HOME}/.bash_locale && \
