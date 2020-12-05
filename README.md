@@ -13,6 +13,7 @@ alias jsdev='docker run -it --rm \
     -e GIT_COMMITTER_NAME="author" \
     -e GIT_AUTHOR_NAME="author" \
     -e EMAIL=author@debian.js \
+    -p 127.0.0.1:3000:3000/tcp \
     apaskal/javascript-neovim:latest bash'
 
 jsdev
