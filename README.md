@@ -4,8 +4,18 @@ Ready to use debian sid docker container for react/node applications development
 ### Usage
 You can run this image with docker command
 ```
-docker run --name debian.js -h debian.js --rm -t -i -v "$(pwd):/home/app/devel" \
--u app -w /home/app/devel apaskal/javascript-neovim:latest bash
+alias jsdev='docker run -it --rm \
+    --name debian.js \
+    -h debian.js \
+    -v "$(pwd):/home/app/devel" \
+    -u app \
+    -w /home/app/devel \
+    -e GIT_COMMITTER_NAME="author" \
+    -e GIT_AUTHOR_NAME="author" \
+    -e EMAIL=author@debian.js \
+    apaskal/javascript-neovim:latest bash'
+
+jsdev
 ```
 Or
 

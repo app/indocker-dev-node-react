@@ -13,6 +13,9 @@ services:
       - a4pi
     environment:
       - TZ=Europe/Moscow
+      - GIT_COMMITTER_NAME="author"
+      - GIT_AUTHOR_NAME="author"
+      - EMAIL=author@debian.js
     volumes:
       - ../devel:/home/app/devel
     working_dir: /home/app/devel
