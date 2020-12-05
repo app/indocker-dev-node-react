@@ -4,7 +4,7 @@ Ready to use debian sid docker container for react/node applications development
 ### Usage
 You can run this image with docker command
 ```
-docker run --name js-vim --rm -t -i -v "$(pwd):/home/app/devel" \
+docker run --name debian.js -h debian.js --rm -t -i -v "$(pwd):/home/app/devel" \
 -u app -w /home/app/devel apaskal/javascript-neovim:latest bash
 ```
 Or
