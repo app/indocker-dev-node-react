@@ -78,6 +78,8 @@ RUN git clone https://github.com/app/nvim.git ${USER_HOME}/.config/nvim
 
 RUN chown -R ${USER}:${USER} ${USER_HOME}
 SHELL ["/bin/bash", "-c"]
+USER root
+RUN npm -g install tern
 USER ${USER}
 WORKDIR ${USER_HOME}
 RUN nvim --headless +PlugInstall +qall 2> ${USER_HOME}/error.log
