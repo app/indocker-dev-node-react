@@ -30,7 +30,9 @@ RUN \
   sudo \
   git \
   neovim \
-  tmux
+  tmux \
+  jq \
+  tree
 
 # nodejs dependencies
 RUN \
