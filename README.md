@@ -38,5 +38,5 @@ Open shell inside docker
 ```
 docker exec -it -u app debian-sid bash
 ```
-You are ready for development with git, vim, node, npm, ag commands available  
+You are ready for development with git, nvim, node, npm, yarn, ag, jq commands available  
 Look at https://github.com/app/nvim to see neovim settings, plugins and key bindings  

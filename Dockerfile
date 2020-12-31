@@ -41,17 +41,26 @@ RUN \
   gnupg \
   gcc g++ make
 
+# (optional) yarn package manager
+RUN \
+  curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - &&\
+  echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list &&\
+  apt update && apt-get -y install --no-install-recommends \
+  yarn
+
 # neovim plugins dependencies
 RUN \
   apt-get -y install --no-install-recommends \
   python3-pip \
   silversearcher-ag \
   bsdmainutils
+RUN pip install pynvim
 
-RUN curl -sL https://deb.nodesource.com/setup_14.x | sudo bash - && \
+# current version of node js
+RUN \
+  curl -sL https://deb.nodesource.com/setup_current.x | bash - && \
   apt-get install -y nodejs
 
-RUN pip install pynvim
 RUN adduser --quiet --disabled-password --gecos "" ${USER}
 RUN echo "${USER} ALL=NOPASSWD: ALL" >>  /etc/sudoers
 
