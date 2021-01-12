@@ -32,7 +32,7 @@ RUN \
   neovim \
   tmux \
   jq \
-  tree
+  tree less
 
 # nodejs dependencies
 RUN \
