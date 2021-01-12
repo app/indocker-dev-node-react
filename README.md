@@ -8,19 +8,20 @@ alias jsdev='docker run -it --rm \
     --name debian.js \
     -h debian.js \
     -v "$(pwd):/home/app/devel" \
+    -p 127.0.0.1:3000:3000/tcp \
+    -p 127.0.0.1:3080:3080/tcp \
     -u app \
     -w /home/app/devel \
     -e GIT_COMMITTER_NAME="author" \
     -e GIT_AUTHOR_NAME="author" \
     -e EMAIL=author@debian.js \
-    -p 127.0.0.1:3000:3000/tcp \
     apaskal/javascript-neovim:latest bash'
 
 jsdev
 ```
-Or
+Or alternativеly  
 
-### Build and run (optional)
+### Build and run  
 Clone
 ```
 git clone https://github.com/app/indocker-dev-node-react.git
