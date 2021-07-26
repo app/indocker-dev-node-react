@@ -11,6 +11,7 @@ RUN \
   apk add --update --no-cache \
   bash \
   bash-completion \
+  util-linux \
   unzip \
   bzip2 \
   ca-certificates \
