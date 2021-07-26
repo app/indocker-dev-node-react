@@ -8,7 +8,8 @@ ENV USER app
 ENV USER_HOME /home/${USER}
 
 RUN \
-  apk add --update --no-cache && \
+  apk add --update --no-cache \
+  bash \
   bash-completion \
   unzip \
   bzip2 \
@@ -33,8 +34,7 @@ RUN \
   py3-pynvim \
   the_silver_searcher \
   gnupg \
-  gcc g++ make && \
-  rm -r /root/.cache
+  gcc g++ make
 
 
 # nodejs dependencies
