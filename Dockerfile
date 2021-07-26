@@ -1,4 +1,4 @@
-FROM debian:sid
+FROM alpine:3.14
 MAINTAINER Andrey Paskal <andrey@paskal.email>
 ARG VCS_REF
 ARG VCS_VERSION
@@ -8,23 +8,15 @@ ENV USER app
 ENV USER_HOME /home/${USER}
 
 RUN \
-  apt-get update -q --fix-missing && \
-  apt-get -y upgrade && \
-  apt-get -y install --no-install-recommends \
-  apt-utils
-
-RUN \
-  apt-get -y install --no-install-recommends \
+  apk add --update --no-cache && \
   bash-completion \
   unzip \
   bzip2 \
-  inetutils-ping \
   ca-certificates \
   curl \
   file \
   grep \
   gzip \
-  locales \
   rsyslog \
   dumb-init \
   sudo \
