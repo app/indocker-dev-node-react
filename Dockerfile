@@ -42,11 +42,13 @@ RUN echo "${USER} ALL=NOPASSWD: ALL" >>  /etc/sudoers.d/11-app.conf && chmod 440
 
 COPY .gitconfig ${USER_HOME}
 COPY .bash_prompt ${USER_HOME}
+COPY .bash_profile ${USER_HOME}
 COPY .bash_git ${USER_HOME}
 COPY .tmux.conf ${USER_HOME}
 COPY .tmux_statusline ${USER_HOME}
 RUN echo "alias ll='ls -l'" >> ${USER_HOME}/.bashrc && \
   echo "alias la='ls -la'" >> ${USER_HOME}/.bashrc && \
+  echo "alias vim='nvim'" >> ${USER_HOME}/.bashrc && \
   echo ". ~/.bash_prompt" >> ${USER_HOME}/.bashrc && \
   echo ". ~/.bash_git" >> ${USER_HOME}/.bashrc && \
   echo ". ~/.bash_locale" >> ${USER_HOME}/.bashrc && \
