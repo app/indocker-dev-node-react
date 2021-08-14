@@ -35,7 +35,8 @@ RUN \
   py3-pynvim \
   the_silver_searcher \
   gnupg \
-  gcc g++ make
+  gcc g++ make \
+  perl
 
 RUN adduser --disabled-password --gecos "" ${USER}
 RUN echo "${USER} ALL=NOPASSWD: ALL" >>  /etc/sudoers.d/11-app.conf && chmod 440 /etc/sudoers.d/11-app.conf
@@ -66,6 +67,7 @@ USER root
 RUN npm -g install tern neovim
 USER ${USER}
 WORKDIR ${USER_HOME}
+RUN yarn global add create-react-app
 RUN nvim --headless +PlugInstall +qall 2> ${USER_HOME}/error.log
 RUN [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
