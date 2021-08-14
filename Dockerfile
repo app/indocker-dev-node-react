@@ -64,10 +64,9 @@ RUN git clone https://github.com/app/nvim.git ${USER_HOME}/.config/nvim
 RUN chown -R ${USER}:${USER} ${USER_HOME}
 SHELL ["/bin/bash", "-c"]
 USER root
-RUN npm -g install tern neovim
+RUN npm -g install tern neovim create-react-app
 USER ${USER}
 WORKDIR ${USER_HOME}
-RUN yarn global add create-react-app
 RUN nvim --headless +PlugInstall +qall 2> ${USER_HOME}/error.log
 RUN [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
