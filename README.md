@@ -1,3 +1,6 @@
+## I made new repository for this project.  
+## Please visit https://github.com/app/condev
+
 # indocker-dev-node-react
 Ready to use debian sid docker container for react/node applications development with neovim
 
